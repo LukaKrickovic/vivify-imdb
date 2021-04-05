@@ -22,7 +22,9 @@ const AddMovie = ({setState, movies}) => {
     const submit = e => {
         e.preventDefault();
         if(validate()){
-            setState([...movies, {title: name, subtitle: subtitle, imageUrl: imageUrl, description: description}]);
+            var randomId = Math.floor(Math.random() * 10000);
+            console.log(randomId)
+            setState([...movies, {ratingCount: 0, title: name, subtitle: subtitle, imageUrl: imageUrl, description: description, isDeletable: true, id: randomId}]);
             resetForm();
         }
 

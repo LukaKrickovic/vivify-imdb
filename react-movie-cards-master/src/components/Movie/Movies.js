@@ -16,7 +16,7 @@ const Movies = () => {
       <div className="d-flex flex-row">
         <AddMovie setState={setMovies} movies={movies}/>
         <div className="col-sm-12">
-          <MovieList movies={movies} />
+          <MovieList movies={movies} setMovies ={setMovies}/>
         </div>
       </div>
     </div>
