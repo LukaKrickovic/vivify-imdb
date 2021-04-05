@@ -24,7 +24,9 @@ const AddMovie = ({setState, movies}) => {
         if(validate()){
             var randomId = Math.floor(Math.random() * 10000);
             console.log(randomId)
-            setState([...movies, {ratingCount: 0, title: name, subtitle: subtitle, imageUrl: imageUrl, description: description, isDeletable: true, id: randomId}]);
+            setState([...movies, 
+                {ratingCount: 0, title: name, subtitle: subtitle, imageUrl: imageUrl, description: description,
+                     isDeletable: true, id: randomId}]);
             resetForm();
         }
 
@@ -38,11 +40,12 @@ const AddMovie = ({setState, movies}) => {
     }
 
     function validate(){
-        var valid = validateName();
-        valid = valid && validateSubtitle();
-        valid = valid && validateDescription();
-        valid = valid && validateImageUrl();
-        return valid;
+        // var isValid = validateName() && validateSubtitle() && validateDescription() && validateImageUrl();
+        var isNameValid = validateName();
+        var isSubtitleValid = validateSubtitle();
+        var isDescriptionValid = validateDescription();
+        var isImageUrlValid = validateImageUrl();
+        return isNameValid && isSubtitleValid && isDescriptionValid && isImageUrlValid;
     }
 
     function validateName(){
@@ -54,15 +57,16 @@ const AddMovie = ({setState, movies}) => {
     }
 
     function validateSubtitle(){
-        if(!name){
+        if(!subtitle){
             setSubtitleError('Please input subtitle!');
+            console.log(subtitleError)
             return false;
         }
         return true;
     }
 
     function validateDescription(){
-        if(!name){
+        if(!description){
             setDescriptionError('Please input a description!');
             return false;
         }
@@ -70,7 +74,7 @@ const AddMovie = ({setState, movies}) => {
     }
 
     function validateImageUrl(){
-        if(!name){
+        if(!imageUrl){
             setImageUrlError('Please input a url for the movie image!');
             return false;
         }

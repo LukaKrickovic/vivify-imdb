@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import StarRating from '../StarRating';
 
-const MovieCard = ({ movie, deleteMovie }) => (
+const MovieCard = ({ movie, deleteMovie, setMovies, movies }) => (
   <div className="movie-card">
     <div className="movie-card card">
       <img className="card-img-top" src={movie.imageUrl} alt="" />
@@ -20,7 +20,7 @@ const MovieCard = ({ movie, deleteMovie }) => (
           {movie.isDeletable && <button onClick={deleteMovie}>Delete</button>}
           </div>
           <div className="float-left mt-1">
-            <StarRating rating={movie.rating} />
+            <StarRating rating={movie.rating} ratingCount={movie.ratingCount} setMovies={setMovies} movieId={movie.id} movies ={movies}/>
           </div>
           <div className="card-footer-badge float-right badge badge-primary badge-pill">{movie.rating}</div>
         </div>
@@ -36,7 +36,8 @@ MovieCard.defaultProps = {
 
 MovieCard.propTypes = {
   movie: PropTypes.object,
-  deleteMovie: PropTypes.func
+  deleteMovie: PropTypes.func,
+  setMovies: PropTypes.func
 };
 
 
