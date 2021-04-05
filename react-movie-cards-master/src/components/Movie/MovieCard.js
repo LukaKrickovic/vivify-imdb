@@ -20,7 +20,7 @@ const MovieCard = ({ movie, deleteMovie, setMovies, movies }) => (
           {movie.isDeletable && <button onClick={deleteMovie}>Delete</button>}
           </div>
           <div className="float-left mt-1">
-            <StarRating rating={movie.rating} ratingCount={movie.ratingCount} setMovies={setMovies} movieId={movie.id} movies ={movies}/>
+            <StarRating rating={movie.rating} ratingCount={movie.ratingCount} setMovies={setMovies} movieId={movie.id} movies={movies}/>
           </div>
           <div className="card-footer-badge float-right badge badge-primary badge-pill">{movie.rating}</div>
         </div>
