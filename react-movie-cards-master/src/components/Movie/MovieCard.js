@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import StarRating from '../StarRating';
 
-const MovieCard = ({ movie, deleteMovie, setMovies, movies }) => (
+const MovieCard = ({ movie, deleteMovie, setMovies, movies }) => {
+  const [isShown, setShown] = useState(false);
+  
+  return(
+
   <div className="movie-card">
     <div className="movie-card card">
       <img className="card-img-top" src={movie.imageUrl} alt="" />
@@ -22,14 +26,16 @@ const MovieCard = ({ movie, deleteMovie, setMovies, movies }) => (
           <div className="float-left mt-1">
             <StarRating rating={movie.rating} ratingCount={movie.ratingCount} setMovies={setMovies} movieId={movie.id} movies={movies}/>
           </div>
-          <div className="card-footer-badge float-right badge badge-primary badge-pill">{movie.rating}</div>
+          <div className="card-footer-badge float-right badge badge-primary badge-pill" onMouseEnter={() => setShown(true)}
+          onMouseLeave={() => setShown(false)}>{movie.rating}</div>
+          {isShown && <span className="float-right mt-1"><em>{movie.ratingCount}</em></span>}
         </div>
       </div>
     </div>
   </div>
-
-);
-
+)
+}
+  
 MovieCard.defaultProps = {
   movie: {},
 };
